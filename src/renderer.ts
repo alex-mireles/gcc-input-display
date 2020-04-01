@@ -27,5 +27,35 @@
  */
 
 import './index.css';
+import { GamecubeController } from './GamecubeController';
+const { ipcRenderer } = require('electron');
 
-console.log('👋 This message is being logged by "renderer.js", included via webpack');
+ipcRenderer.on('controller polled', (error: any, controller: GamecubeController) => {
+  // if (controller.a_button) {
+  //   document.getElementById('port' + controller.port +'-a-button').style.backgroundColor = '#bfffe4';
+  // } else {
+  //   document.getElementById('port' + controller.port +'-a-button').style.backgroundColor = '#00cf78';
+  // }
+  if (controller.a_button) {
+    document.getElementById('port' + controller.port +'-a-button').classList.add('active');
+    document.getElementById('port' + controller.port +'-a-press').classList.add('active');
+  } else {
+    document.getElementById('port' + controller.port +'-a-button').classList.remove('active');
+    document.getElementById('port' + controller.port +'-a-press').classList.remove('active');
+  }
+  if (controller.b_button) {
+    document.getElementById('port' + controller.port +'-b-button').style.backgroundColor = '#ffbfbf';
+  } else {
+    document.getElementById('port' + controller.port +'-b-button').style.backgroundColor = '#c20000';
+  }
+  if (controller.x_button) {
+    document.getElementById('port' + controller.port +'-x-button').style.backgroundColor = '#ffffff';
+  } else {
+    document.getElementById('port' + controller.port +'-x-button').style.backgroundColor = '#c2c2c2';
+  }
+  if (controller.y_button) {
+    document.getElementById('port' + controller.port +'-y-button').style.backgroundColor = '#ffffff';
+  } else {
+    document.getElementById('port' + controller.port +'-y-button').style.backgroundColor = '#c2c2c2';
+  }
+});
