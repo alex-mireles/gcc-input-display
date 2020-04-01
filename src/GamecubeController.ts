@@ -13,15 +13,15 @@ export class GamecubeController {
   d_pad_right: Boolean;
   d_pad_down: Boolean;
   d_pad_up: Boolean;
-  control_stick_x: Number;
-  control_stick_y: Number;
-  c_stick_x: Number;
-  c_stick_y: Number;
-  l_analog: Number;
-  r_analog: Number;
-  port: Number;
+  control_stick_x: number;
+  control_stick_y: number;
+  c_stick_x: number;
+  c_stick_y: number;
+  l_analog: number;
+  r_analog: number;
+  port: number;
 
-  constructor(port: Number) {
+  constructor(port: number) {
     this.a_button = false;
     this.b_button = false;
     this.x_button = false;

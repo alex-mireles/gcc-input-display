@@ -22,7 +22,7 @@ export class InputReader {
     fs.readFile("D:/Games/Netplay/Project M/git_build/project-plus/Bird's Dolphin Test/GCCInputs.bin", (err: any, data: any) => {
       
       if (data.length != 37) {
-        console.log("Fail to read data from file!");
+        // Failed to read from file, try again
         setTimeout(() => this.pollInputsFile(), 16.667);
         return;
       }
@@ -79,8 +79,12 @@ export class InputReader {
     // BYTE 4
     // Control Stick X Value (0 - 255)
 
+    this.controller1.control_stick_x = data[4];
+
     // BYTE 5
     // Control Stick Y Value (0 - 255)
+
+    this.controller1.control_stick_y = data[5];
 
     // BYTE 6
     // C-Stick X Value (0 - 255)
