@@ -31,11 +31,6 @@ import { GamecubeController } from './GamecubeController';
 const { ipcRenderer } = require('electron');
 
 ipcRenderer.on('controller polled', (error: any, controller: GamecubeController) => {
-  // if (controller.a_button) {
-  //   document.getElementById('port' + controller.port +'-a-button').style.backgroundColor = '#bfffe4';
-  // } else {
-  //   document.getElementById('port' + controller.port +'-a-button').style.backgroundColor = '#00cf78';
-  // }
   if (controller.a_button) {
     document.getElementById('port' + controller.port +'-a-button').classList.add('active');
     document.getElementById('port' + controller.port +'-a-press-shadow').classList.add('transition');
@@ -44,9 +39,11 @@ ipcRenderer.on('controller polled', (error: any, controller: GamecubeController)
     document.getElementById('port' + controller.port +'-a-press-shadow').classList.remove('transition');
   }
   if (controller.b_button) {
-    document.getElementById('port' + controller.port +'-b-button').style.backgroundColor = '#ffbfbf';
+    document.getElementById('port' + controller.port +'-b-button').classList.add('active');
+    document.getElementById('port' + controller.port +'-b-press-shadow').classList.add('transition');
   } else {
-    document.getElementById('port' + controller.port +'-b-button').style.backgroundColor = '#c20000';
+    document.getElementById('port' + controller.port +'-b-button').classList.remove('active');
+    document.getElementById('port' + controller.port +'-b-press-shadow').classList.remove('transition');
   }
   if (controller.x_button) {
     document.getElementById('port' + controller.port +'-x-button').style.backgroundColor = '#ffffff';
