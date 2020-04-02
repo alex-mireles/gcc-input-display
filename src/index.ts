@@ -18,7 +18,8 @@ const createWindow = () => {
     width: 800,
     frame: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      webSecurity: process.env.NODE_ENV !== 'development'
     }
   });
 

@@ -100,14 +100,6 @@ body {
   transition: background-color 0.16s, left 0.08s, top 0.08s, height 0.08s, width 0.08s;
 }
 
-#port1-y-button {
-  position: absolute;
-  background-color: #c2c2c2;
-  width: 50px;
-  height: 20px;
-  left: 140px;
-}
-
 #port1-x-button {
   position: absolute;
   background-color: #c2c2c2;
@@ -117,22 +109,87 @@ body {
   left: 200px;
 }
 
+#port1-x-button.active {
+  background-color: #f0f0f0;
+  height: 40px;
+  width: 16px;
+  top: 35px;
+  left: 202px;
+}
+
+#port1-x-press-shadow {
+  position: absolute;
+  background-color: white;
+  height: 50px;
+  width: 20px;
+  top: 30px;
+  left: 200px;
+  transition: all 0s;
+  z-index: -1;
+}
+
+#port1-x-press-shadow.transition {
+  height: 70px;
+  width: 28px;
+  top: 20px;
+  left: 196px;
+  background-color: transparent;
+  transition: background-color 0.16s, left 0.08s, top 0.08s, height 0.08s, width 0.08s;
+}
+
+#port1-y-button {
+  position: absolute;
+  background-color: #c2c2c2;
+  width: 50px;
+  height: 20px;
+  left: 140px;
+}
+
+#port1-y-button.active {
+  background-color: #f0f0f0;
+  width: 40px;
+  height: 16px;
+  top: 2px;
+  left: 145px;
+}
+
+#port1-y-press-shadow {
+  position: absolute;
+  background-color: white;
+  width: 50px;
+  height: 20px;
+  left: 140px;
+  transition: all 0s;
+  z-index: -1;
+}
+
+#port1-y-press-shadow.transition {
+  width: 70px;
+  height: 28px;
+  top: -4px;
+  left: 130px;
+  background-color: transparent;
+  transition: background-color 0.16s, left 0.08s, top 0.08s, height 0.08s, width 0.08s;
+}
+
 #port1-control-stick-box {
   position: relative;
-  background-color: #c2c2c2;
+  background-image: url("file:///control_stick.png");
+  background-size: 70px;
   top: 10px;
   height: 70px;
   width: 70px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 #port1-control-stick {
   position: absolute;
-  background-color: #737373;
-  height: 10px;
-  width: 10px;
-  bottom: calc((70px / 2) - 5px);
-  left: calc((70px / 2) - 5px);
+  background-color: #cccccc;
+  height: 50px;
+  width: 50px;
+  bottom: calc((70px / 2) - 25px);
+  left: calc((70px / 2) - 25px);
   border-radius: 50%;
   transition: 16.66ms;
+  transform: rotateX(0deg), rotateY(0deg);
 }

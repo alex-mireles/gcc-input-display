@@ -46,17 +46,27 @@ ipcRenderer.on('controller polled', (error: any, controller: GamecubeController)
     document.getElementById('port' + controller.port +'-b-press-shadow').classList.remove('transition');
   }
   if (controller.x_button) {
-    document.getElementById('port' + controller.port +'-x-button').style.backgroundColor = '#ffffff';
+    document.getElementById('port' + controller.port +'-x-button').classList.add('active');
+    document.getElementById('port' + controller.port +'-x-press-shadow').classList.add('transition');
   } else {
-    document.getElementById('port' + controller.port +'-x-button').style.backgroundColor = '#c2c2c2';
+    document.getElementById('port' + controller.port +'-x-button').classList.remove('active');
+    document.getElementById('port' + controller.port +'-x-press-shadow').classList.remove('transition');
   }
   if (controller.y_button) {
-    document.getElementById('port' + controller.port +'-y-button').style.backgroundColor = '#ffffff';
+    document.getElementById('port' + controller.port +'-y-button').classList.add('active');
+    document.getElementById('port' + controller.port +'-y-press-shadow').classList.add('transition');
   } else {
-    document.getElementById('port' + controller.port +'-y-button').style.backgroundColor = '#c2c2c2';
+    document.getElementById('port' + controller.port +'-y-button').classList.remove('active');
+    document.getElementById('port' + controller.port +'-y-press-shadow').classList.remove('transition');
   }
-  let x_position = (70 * (controller.control_stick_x / 255)) - 5;
-  let y_position = (70 * (controller.control_stick_y / 255)) - 5;
+  let x_position = (70 * (controller.control_stick_x / 255)) - 25;
+  let y_position = (70 * (controller.control_stick_y / 255)) - 25;
   document.getElementById('port' + controller.port +'-control-stick').style.left = x_position.toString() + "px";
   document.getElementById('port' + controller.port +'-control-stick').style.bottom = y_position.toString() + "px";
+
+  let rotationY = ((controller.control_stick_x - 127) / 127) * 35;
+  let rotationX = ((controller.control_stick_y - 127) / 127) * 35;
+
+
+  document.getElementById('port' + controller.port +'-control-stick').style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
 });
