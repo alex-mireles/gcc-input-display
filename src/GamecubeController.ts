@@ -91,6 +91,30 @@ export class GamecubeController {
     this.y_button = false;
   }
 
+  l_pressed() {
+    if (this.l_trigger === false) 
+      console.log('Port ' + this.port + ': L TRIGGER PRESSED');
+    this.l_trigger = true;
+  }
+
+  l_released() {
+    if (this.l_trigger === true) 
+      console.log('Port ' + this.port + ': L TRIGGER RELEASED');
+    this.l_trigger = false;
+  }
+
+  r_pressed() {
+    if (this.r_trigger === false) 
+      console.log('Port ' + this.port + ': R TRIGGER PRESSED');
+    this.r_trigger = true;
+  }
+
+  r_released() {
+    if (this.r_trigger === true) 
+      console.log('Port ' + this.port + ': R TRIGGER RELEASED');
+    this.r_trigger = false;
+  }
+
   d_pad_left_pressed() {
     if (this.d_pad_left === false) 
       console.log('Port ' + this.port + ': D PAD LEFT PRESSED');
@@ -204,6 +228,18 @@ export class GamecubeController {
       this.start_pressed();
     } else {
       this.start_released();
+    }
+
+    if (pressedButtonsArray.includes('R')) {
+      this.r_pressed();
+    } else {
+      this.r_released();
+    }
+
+    if (pressedButtonsArray.includes('L')) {
+      this.l_pressed();
+    } else {
+      this.l_released();
     }
 
     mainWindow.webContents.send('controller polled', this);

@@ -31,7 +31,7 @@ body {
   background-color: #00cf78;
   height: 50px;
   width: 50px;
-  top: 30px;
+  top: 50px;
   left: 190px;
 }
 
@@ -39,7 +39,7 @@ body {
   background-color: #bfffe4;
   height: 45px;
   width: 45px;
-  top: 32.5px;
+  top: 52.5px;
   left: 192.5px;
 }
 
@@ -48,7 +48,7 @@ body {
   background-color: white;
   height: 50px;
   width: 50px;
-  top: 30px;
+  top: 50px;
   left: 190px;
   transition: all 0s;
   z-index: -1;
@@ -57,7 +57,7 @@ body {
 #port1-a-press-shadow.transition {
   height: 70px;
   width: 70px;
-  top: 20px;
+  top: 40px;
   left: 180px;
   background-color: transparent;
   transition: background-color 0.16s, left 0.08s, top 0.08s, height 0.08s, width 0.08s;
@@ -68,7 +68,7 @@ body {
   background-color: #c20000;
   height: 30px;
   width: 30px;
-  top: 50px;
+  top: 70px;
   left: 150px;
 }
 
@@ -76,7 +76,7 @@ body {
   background-color: #ffbfbf;
   height: 25px;
   width: 25px;
-  top: 52.5px;
+  top: 72.5px;
   left: 152.5px;
 }
 
@@ -85,7 +85,7 @@ body {
   background-color: white;
   height: 30px;
   width: 30px;
-  top: 50px;
+  top: 70px;
   left: 150px;
   transition: all 0s;
   z-index: -1;
@@ -94,7 +94,7 @@ body {
 #port1-b-press-shadow.transition {
   height: 45px;
   width: 45px;
-  top: 42.5px;
+  top: 62.5px;
   left: 142.5px;
   background-color: transparent;
   transition: background-color 0.16s, left 0.08s, top 0.08s, height 0.08s, width 0.08s;
@@ -102,10 +102,10 @@ body {
 
 #port1-x-button {
   position: absolute;
-  background-color: #c2c2c2;
+  background-color: #cccccc;
   height: 50px;
   width: 20px;
-  top: 30px;
+  top: 50px;
   left: 250px;
 }
 
@@ -113,7 +113,7 @@ body {
   background-color: #f0f0f0;
   height: 40px;
   width: 16px;
-  top: 35px;
+  top: 55px;
   left: 252px;
 }
 
@@ -122,7 +122,7 @@ body {
   background-color: white;
   height: 50px;
   width: 20px;
-  top: 30px;
+  top: 50px;
   left: 250px;
   transition: all 0s;
   z-index: -1;
@@ -131,7 +131,7 @@ body {
 #port1-x-press-shadow.transition {
   height: 70px;
   width: 28px;
-  top: 20px;
+  top: 40px;
   left: 246px;
   background-color: transparent;
   transition: background-color 0.16s, left 0.08s, top 0.08s, height 0.08s, width 0.08s;
@@ -139,9 +139,10 @@ body {
 
 #port1-y-button {
   position: absolute;
-  background-color: #c2c2c2;
+  background-color: #cccccc;
   width: 50px;
   height: 20px;
+  top: 20px;
   left: 190px;
 }
 
@@ -149,7 +150,7 @@ body {
   background-color: #f0f0f0;
   width: 40px;
   height: 16px;
-  top: 2px;
+  top: 22px;
   left: 195px;
 }
 
@@ -158,6 +159,7 @@ body {
   background-color: white;
   width: 50px;
   height: 20px;
+  top: 20px;
   left: 190px;
   transition: all 0s;
   z-index: -1;
@@ -166,7 +168,7 @@ body {
 #port1-y-press-shadow.transition {
   width: 70px;
   height: 28px;
-  top: -4px;
+  top: 16px;
   left: 180px;
   background-color: transparent;
   transition: background-color 0.16s, left 0.08s, top 0.08s, height 0.08s, width 0.08s;
@@ -177,7 +179,7 @@ body {
   background-color: #cccccc;
   height: 15px;
   width: 15px;
-  top: 50px;
+  top: 70px;
   left: 105px;
 }
 
@@ -185,7 +187,7 @@ body {
   background-color: #f0f0f0;
   height: 10px;
   width: 10px;
-  top: 52.5px;
+  top: 72.5px;
   left: 107.5px;
 }
 
@@ -194,7 +196,7 @@ body {
   background-color: white;
   height: 15px;
   width: 15px;
-  top: 50px;
+  top: 70px;
   left: 105px;
   transition: all 0s;
   z-index: -1;
@@ -203,41 +205,106 @@ body {
 #port1-start-press-shadow.transition {
   height: 25px;
   width: 25px;
-  top: 45px;
+  top: 65px;
   left: 100px;
   background-color: transparent;
   transition: background-color 0.16s, left 0.08s, top 0.08s, height 0.08s, width 0.08s;
 }
 
-#port1-L-trigger {
+#port1-l-trigger {
   position: absolute;
   background-color: transparent;
   border-style: solid;
+  border-width: 3px;
   border-color: #cccccc;
   height: 10px;
-  width: 70px;
-  top: 0px;
-  left: 0px;
+  width: 75px;
+  top: -3px;
+  left: -5px;
 }
 
-#port1-L-analog {
+#port1-l-trigger.active {
+  border-color: white;
+}
+
+#port1-l-trigger-shadow {
   position: absolute;
   background-color: white;
+  height: 16px;
+  width: 0px;
+  left: 75px;
+  top: -3px;
+}
+
+#port1-l-trigger-shadow.transition {
+  width: 40px;
+  background-color: transparent;
+  transition: background-color 0.16s, top 0.08s, width 0.08s, height 0.08s;
+}
+
+#port1-l-analog {
+  position: absolute;
+  background-color: #cccccc;
   height: 10px;
   width: 0px;
-  top: 3px;
-  left: 3px;
   transition: width 16.66ms;
+}
+
+#port1-l-analog.active {
+  background-color: white;
+}
+
+#port1-r-trigger {
+  position: absolute;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #cccccc;
+  height: 10px;
+  width: 75px;
+  top: -3px;
+  left: 190px;
+}
+
+#port1-r-trigger.active {
+  border-color: white;
+}
+
+#port1-r-analog {
+  position: absolute;
+  background-color: #cccccc;
+  height: 10px;
+  width: 0px;
+  right: 0px;
+  transition: width 16.66ms;
+}
+
+#port1-r-analog.active {
+  background-color: white;
+}
+
+#port1-r-trigger-shadow {
+  position: absolute;
+  background-color: white;
+  height: 16px;
+  width: 0px;
+  right: 75px;
+  top: -3px;
+}
+
+#port1-r-trigger-shadow.transition {
+  width: 40px;
+  background-color: transparent;
+  transition: background-color 0.16s, width 0.08s;
 }
 
 #port1-control-stick-box {
   position: relative;
   background-image: url("file:///control_stick.png");
   background-size: 70px;
-  top: 10px;
+  top: 30px;
   height: 70px;
   width: 70px;
-  /* border-radius: 50%; */
   z-index: -1;
 }
 

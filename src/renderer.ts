@@ -59,6 +59,24 @@ ipcRenderer.on('controller polled', (error: any, controller: GamecubeController)
     document.getElementById('port' + controller.port +'-y-button').classList.remove('active');
     document.getElementById('port' + controller.port +'-y-press-shadow').classList.remove('transition');
   }
+  if (controller.l_trigger) {
+    document.getElementById('port' + controller.port +'-l-trigger').classList.add('active');
+    document.getElementById('port' + controller.port +'-l-analog').classList.add('active');
+    document.getElementById('port' + controller.port +'-l-trigger-shadow').classList.add('transition');
+  } else {
+    document.getElementById('port' + controller.port +'-l-trigger').classList.remove('active');
+    document.getElementById('port' + controller.port +'-l-analog').classList.remove('active');
+    document.getElementById('port' + controller.port +'-l-trigger-shadow').classList.remove('transition');
+  }
+  if (controller.r_trigger) {
+    document.getElementById('port' + controller.port +'-r-trigger').classList.add('active');
+    document.getElementById('port' + controller.port +'-r-analog').classList.add('active');
+    document.getElementById('port' + controller.port +'-r-trigger-shadow').classList.add('transition');
+  } else {
+    document.getElementById('port' + controller.port +'-r-trigger').classList.remove('active');
+    document.getElementById('port' + controller.port +'-r-analog').classList.remove('active');
+    document.getElementById('port' + controller.port +'-r-trigger-shadow').classList.remove('transition');
+  }
   if (controller.start_button) {
     document.getElementById('port' + controller.port +'-start-button').classList.add('active');
     document.getElementById('port' + controller.port +'-start-press-shadow').classList.add('transition');
@@ -67,9 +85,11 @@ ipcRenderer.on('controller polled', (error: any, controller: GamecubeController)
     document.getElementById('port' + controller.port +'-start-press-shadow').classList.remove('transition');
   }
 
-  let l_analog = (controller.l_analog / 255) * 70
-  document.getElementById('port' + controller.port +'-L-analog').style.width = l_analog + "px";
+  let l_analog = controller.l_trigger ? 75 : (controller.l_analog / 255) * 75;
+  document.getElementById('port' + controller.port +'-l-analog').style.width = l_analog + "px";
 
+  let r_analog = controller.r_trigger ? 75 : (controller.r_analog / 255) * 75;
+  document.getElementById('port' + controller.port +'-r-analog').style.width = r_analog + "px";
   
   let x_position = (70 * (controller.control_stick_x / 255)) - 25;
   let y_position = (70 * (controller.control_stick_y / 255)) - 25;

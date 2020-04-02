@@ -89,8 +89,12 @@ export class InputReader {
     // BYTE 6
     // C-Stick X Value (0 - 255)
 
+    this.controller1.c_stick_x= data[6];
+
     // BYTE 7
     // C-Stick Y Value (0 - 255)
+
+    this.controller1.c_stick_y= data[7];
 
     // BYTE 8
     // L Trigger Analog Value (0 - 255)
@@ -100,7 +104,7 @@ export class InputReader {
     // BYTE 9
     // R Trigger Analog Value (0 - 255)
 
-    
+    this.controller1.r_analog = data[9];
 
     this.controller1.pressButtons(controllerOneButtonsArray);
     // console.log(controllerOneButtonsArray);
