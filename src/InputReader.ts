@@ -95,6 +95,8 @@ export class InputReader {
     // BYTE 8
     // L Trigger Analog Value (0 - 255)
 
+    this.controller1.l_analog = data[8];
+
     // BYTE 9
     // R Trigger Analog Value (0 - 255)
 

@@ -139,6 +139,18 @@ export class GamecubeController {
     this.d_pad_up = false;
   }
 
+  start_pressed() {
+    if (this.start_button === false) 
+      console.log('Port ' + this.port + ': START PRESSED');
+    this.start_button = true;
+  }
+
+  start_released() {
+    if (this.start_button === true) 
+      console.log('Port ' + this.port + ': START RELEASED');
+    this.start_button = false;
+  }
+
   pressButtons(pressedButtonsArray: string[]) {
     if (pressedButtonsArray.includes('A')) {
       this.a_pressed();
@@ -186,6 +198,12 @@ export class GamecubeController {
       this.d_pad_up_pressed();
     } else {
       this.d_pad_up_released();
+    }
+
+    if (pressedButtonsArray.includes('START')) {
+      this.start_pressed();
+    } else {
+      this.start_released();
     }
 
     mainWindow.webContents.send('controller polled', this);

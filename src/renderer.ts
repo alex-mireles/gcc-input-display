@@ -59,6 +59,18 @@ ipcRenderer.on('controller polled', (error: any, controller: GamecubeController)
     document.getElementById('port' + controller.port +'-y-button').classList.remove('active');
     document.getElementById('port' + controller.port +'-y-press-shadow').classList.remove('transition');
   }
+  if (controller.start_button) {
+    document.getElementById('port' + controller.port +'-start-button').classList.add('active');
+    document.getElementById('port' + controller.port +'-start-press-shadow').classList.add('transition');
+  } else {
+    document.getElementById('port' + controller.port +'-start-button').classList.remove('active');
+    document.getElementById('port' + controller.port +'-start-press-shadow').classList.remove('transition');
+  }
+
+  let l_analog = (controller.l_analog / 255) * 70
+  document.getElementById('port' + controller.port +'-L-analog').style.width = l_analog + "px";
+
+  
   let x_position = (70 * (controller.control_stick_x / 255)) - 25;
   let y_position = (70 * (controller.control_stick_y / 255)) - 25;
   document.getElementById('port' + controller.port +'-control-stick').style.left = x_position.toString() + "px";
@@ -66,7 +78,6 @@ ipcRenderer.on('controller polled', (error: any, controller: GamecubeController)
 
   let rotationY = ((controller.control_stick_x - 127) / 127) * 35;
   let rotationX = ((controller.control_stick_y - 127) / 127) * 35;
-
 
   document.getElementById('port' + controller.port +'-control-stick').style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
 });
