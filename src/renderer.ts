@@ -136,8 +136,8 @@ ipcRenderer.on('controller polled', (error: any, controller: GamecubeController)
 
   document.getElementById('port' + controller.port +'-control-stick').style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
 
-  x_position = (70 * (controller.c_stick_x / 255)) - 17.5;
-  y_position = (70 * (controller.c_stick_y / 255)) - 17.5;
+  x_position = (70 * (controller.c_stick_x / 255)) - 20;
+  y_position = (70 * (controller.c_stick_y / 255)) - 20;
 
   document.getElementById('port' + controller.port +'-c-stick').style.left = x_position.toString() + "px";
   document.getElementById('port' + controller.port +'-c-stick').style.bottom = y_position.toString() + "px";

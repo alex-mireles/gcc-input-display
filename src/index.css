@@ -382,9 +382,9 @@ body {
 }
 
 #port1-d-pad-left-press-shadow.transition {
-  width: 25px;
+  width: 15px;
   background-color: transparent;
-  transition: all 0.16s;
+  transition: background-color 0.16s, width 0.08s;
 }
 
 #port1-d-pad-right {
@@ -414,9 +414,9 @@ body {
 }
 
 #port1-d-pad-right-press-shadow.transition {
-  width: 25px;
+  width: 15px;
   background-color: transparent;
-  transition: all 0.16s;
+  transition: background-color 0.16s, width 0.08s;
 }
 
 #port1-d-pad-down {
@@ -446,9 +446,9 @@ body {
 }
 
 #port1-d-pad-down-press-shadow.transition {
-  height: 25px;
+  height: 15px;
   background-color: transparent;
-  transition: all 0.16s;
+  transition: background-color 0.16s, height 0.08s;
 }
 
 #port1-d-pad-up {
@@ -478,9 +478,9 @@ body {
 }
 
 #port1-d-pad-up-press-shadow.transition {
-  height: 25px;
+  height: 15px;
   background-color: transparent;
-  transition: all 0.16s;
+  transition: background-color 0.16s, height 0.08s;
 }
 
 #port1-control-stick-box {
@@ -519,8 +519,8 @@ body {
 #port1-c-stick {
   position: absolute;
   background-color: #ffe600;
-  height: 35px;
-  width: 35px;
+  height: 40px;
+  width: 40px;
   bottom: calc((70px / 2) - 17.5px);
   left: calc((70px / 2) - 17.5px);
   border-radius: 50%;
