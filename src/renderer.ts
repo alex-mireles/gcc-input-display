@@ -84,6 +84,41 @@ ipcRenderer.on('controller polled', (error: any, controller: GamecubeController)
     document.getElementById('port' + controller.port +'-start-button').classList.remove('active');
     document.getElementById('port' + controller.port +'-start-press-shadow').classList.remove('transition');
   }
+  if (controller.z_button) {
+    document.getElementById('port' + controller.port +'-z-button').classList.add('active');
+    document.getElementById('port' + controller.port +'-z-press-shadow').classList.add('transition');
+  } else {
+    document.getElementById('port' + controller.port +'-z-button').classList.remove('active');
+    document.getElementById('port' + controller.port +'-z-press-shadow').classList.remove('transition');
+  }
+  if (controller.d_pad_left) {
+    document.getElementById('port' + controller.port +'-d-pad-left').classList.add('active');
+    document.getElementById('port' + controller.port +'-d-pad-left-press-shadow').classList.add('transition');
+  } else {
+    document.getElementById('port' + controller.port +'-d-pad-left').classList.remove('active');
+    document.getElementById('port' + controller.port +'-d-pad-left-press-shadow').classList.remove('transition');
+  }
+  if (controller.d_pad_right) {
+    document.getElementById('port' + controller.port +'-d-pad-right').classList.add('active');
+    document.getElementById('port' + controller.port +'-d-pad-right-press-shadow').classList.add('transition');
+  } else {
+    document.getElementById('port' + controller.port +'-d-pad-right').classList.remove('active');
+    document.getElementById('port' + controller.port +'-d-pad-right-press-shadow').classList.remove('transition');
+  }
+  if (controller.d_pad_down) {
+    document.getElementById('port' + controller.port +'-d-pad-down').classList.add('active');
+    document.getElementById('port' + controller.port +'-d-pad-down-press-shadow').classList.add('transition');
+  } else {
+    document.getElementById('port' + controller.port +'-d-pad-down').classList.remove('active');
+    document.getElementById('port' + controller.port +'-d-pad-down-press-shadow').classList.remove('transition');
+  }
+  if (controller.d_pad_up) {
+    document.getElementById('port' + controller.port +'-d-pad-up').classList.add('active');
+    document.getElementById('port' + controller.port +'-d-pad-up-press-shadow').classList.add('transition');
+  } else {
+    document.getElementById('port' + controller.port +'-d-pad-up').classList.remove('active');
+    document.getElementById('port' + controller.port +'-d-pad-up-press-shadow').classList.remove('transition');
+  }
 
   let l_analog = controller.l_trigger ? 75 : (controller.l_analog / 255) * 75;
   document.getElementById('port' + controller.port +'-l-analog').style.width = l_analog + "px";
@@ -96,8 +131,19 @@ ipcRenderer.on('controller polled', (error: any, controller: GamecubeController)
   document.getElementById('port' + controller.port +'-control-stick').style.left = x_position.toString() + "px";
   document.getElementById('port' + controller.port +'-control-stick').style.bottom = y_position.toString() + "px";
 
-  let rotationY = ((controller.control_stick_x - 127) / 127) * 35;
-  let rotationX = ((controller.control_stick_y - 127) / 127) * 35;
+  let rotationY = ((controller.control_stick_x - 127) / 127) * 40;
+  let rotationX = ((controller.control_stick_y - 127) / 127) * 40;
 
   document.getElementById('port' + controller.port +'-control-stick').style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+
+  x_position = (70 * (controller.c_stick_x / 255)) - 17.5;
+  y_position = (70 * (controller.c_stick_y / 255)) - 17.5;
+
+  document.getElementById('port' + controller.port +'-c-stick').style.left = x_position.toString() + "px";
+  document.getElementById('port' + controller.port +'-c-stick').style.bottom = y_position.toString() + "px";
+
+  rotationY = ((controller.c_stick_x - 127) / 127) * 40;
+  rotationX = ((controller.c_stick_y - 127) / 127) * 40;
+
+  document.getElementById('port' + controller.port +'-c-stick').style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
 });

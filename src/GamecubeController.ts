@@ -115,6 +115,18 @@ export class GamecubeController {
     this.r_trigger = false;
   }
 
+  z_pressed() {
+    if (this.z_button === false) 
+      console.log('Port ' + this.port + ': Z TRIGGER PRESSED');
+    this.z_button = true;
+  }
+
+  z_released() {
+    if (this.z_button === true) 
+      console.log('Port ' + this.port + ': Z TRIGGER RELEASED');
+    this.z_button = false;
+  }
+
   d_pad_left_pressed() {
     if (this.d_pad_left === false) 
       console.log('Port ' + this.port + ': D PAD LEFT PRESSED');
@@ -230,16 +242,46 @@ export class GamecubeController {
       this.start_released();
     }
 
+    if (pressedButtonsArray.includes('L')) {
+      this.l_pressed();
+    } else {
+      this.l_released();
+    }
+
     if (pressedButtonsArray.includes('R')) {
       this.r_pressed();
     } else {
       this.r_released();
     }
 
-    if (pressedButtonsArray.includes('L')) {
-      this.l_pressed();
+    if (pressedButtonsArray.includes('Z')) {
+      this.z_pressed();
     } else {
-      this.l_released();
+      this.z_released();
+    }
+
+    if (pressedButtonsArray.includes('D_PAD_LEFT')) {
+      this.d_pad_left_pressed();
+    } else {
+      this.d_pad_left_released();
+    }
+
+    if (pressedButtonsArray.includes('D_PAD_RIGHT')) {
+      this.d_pad_right_pressed();
+    } else {
+      this.d_pad_right_released();
+    }
+
+    if (pressedButtonsArray.includes('D_PAD_DOWN')) {
+      this.d_pad_down_pressed();
+    } else {
+      this.d_pad_down_released();
+    }
+
+    if (pressedButtonsArray.includes('D_PAD_UP')) {
+      this.d_pad_up_pressed();
+    } else {
+      this.d_pad_up_released();
     }
 
     mainWindow.webContents.send('controller polled', this);
