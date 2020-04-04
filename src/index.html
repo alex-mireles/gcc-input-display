@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
-<link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 
 <head>
   <meta charset="UTF-8">
   <title>GCC Input Display</title>
-
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css" />
 </head>
 
 <body>
+  <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
   <div class="menu-bar">
     <div class="app-title">GCC Input Display</div>
+    <button id="color-picker-button" type="button">Color Picker</button>
   </div>
-  <div class="port-container">
+  <div id="port1" class="port-container">
     <div id="port1-l-trigger">
       <div id="port1-l-analog"></div>
       <div id="port1-l-trigger-shadow"></div>
@@ -54,7 +56,7 @@
     </div>
   </div>
 
-  <div class="port-container" style = "left: 400px;">
+  <div id="port2" class="port-container" style="left: 350px;">
     <div id="port2-l-trigger">
       <div id="port2-l-analog"></div>
       <div id="port2-l-trigger-shadow"></div>

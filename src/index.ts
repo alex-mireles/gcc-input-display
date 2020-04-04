@@ -15,19 +15,20 @@ const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     height: 600,
-    width: 800,
+    width: 680,
     frame: false,
+    show: false,
     webPreferences: {
       nodeIntegration: true,
       webSecurity: process.env.NODE_ENV !== 'development'
     }
   });
 
-  // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
+  });
   
 };
 

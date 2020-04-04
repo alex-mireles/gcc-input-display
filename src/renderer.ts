@@ -28,6 +28,8 @@
 
 import './index.css';
 import { GamecubeController } from './GamecubeController';
+import '@simonwep/pickr/dist/themes/nano.min.css';
+import Pickr from '@simonwep/pickr';
 const { ipcRenderer } = require('electron');
 
 ipcRenderer.on('controller polled', (error: any, controller: GamecubeController) => {
@@ -146,4 +148,60 @@ ipcRenderer.on('controller polled', (error: any, controller: GamecubeController)
   rotationX = ((controller.c_stick_y - 127) / 127) * 40;
 
   document.getElementById('port' + controller.port +'-c-stick').style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+});
+
+ipcRenderer.on('port1 enabled', () => {
+  document.getElementById('port1').style.visibility = 'visible';
+});
+
+ipcRenderer.on('port1 disabled', () => {
+  document.getElementById('port1').style.visibility = 'hidden';
+});
+
+ipcRenderer.on('port2 enabled', () => {
+  document.getElementById('port2').style.visibility = 'visible';
+});
+
+ipcRenderer.on('port2 disabled', () => {
+  document.getElementById('port2').style.visibility = 'hidden';
+});
+
+const colorPickerButton = <HTMLInputElement> document.getElementById('color-picker-button');
+
+const pickr = Pickr.create({
+  el: colorPickerButton,
+  useAsButton: true,
+  theme: 'nano', // or 'monolith', or 'nano'
+  default: '#2f3845',
+
+  swatches: [
+    '#2f3845',
+    '#3D3D3D',
+    '#000000'
+  ],
+
+  components: {
+
+      // Main components
+      preview: true,
+      opacity: true,
+      hue: true,
+
+      // Input / output Options
+      interaction: {
+          hex: true,
+          rgba: true,
+          hsla: true,
+          hsva: true,
+          cmyk: true,
+          input: true,
+          clear: false,
+          save: true
+      }
+  }
+}).on('init', (pickr: any) => {
+  pickr.setColorRepresentation('HEX');
+}).on('save', (color: any) => {
+  document.getElementsByTagName('body')[0].style.backgroundColor = pickr.getSelectedColor().toHEXA().toString();
+  pickr.hide();
 });

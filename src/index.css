@@ -5,6 +5,10 @@ body {
   background-color: #2f3845;
 }
 
+html {
+  overflow: hidden;
+}
+
 .menu-bar {
   -webkit-app-region: drag;
   height: 30px;
@@ -20,9 +24,31 @@ body {
   color:white;
 }
 
+#color-picker-button {
+  border: none;
+  outline: none;
+  background-color: #2f3845;
+  border-radius: 5px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  margin-top: 3px;
+  margin-left: 10px;
+  width: 110px;
+  height: 24px;
+  color: white;
+  transition: background-color 0.5s;
+  -webkit-app-region: no-drag;
+}
+
+#color-picker-button:hover {
+  background-color: #728299;
+  transition: background-color 0.5s;
+}
+
 .port-container {
   margin: 30px;
-  height: 150px;
+  height: 210px;
+  width: 270px;
   position: absolute;
 }
 

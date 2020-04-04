@@ -35,6 +35,9 @@ export class InputReader {
       // Port 3: Bytes 20 - 28
       // Port 4: Bytes 29 - 37
 
+      this.controller1.enableOrDisable(data[1] > 0 ? true : false);
+      this.controller2.enableOrDisable(data[10] > 0 ? true : false);
+
       let controller1_byte2 = data[2] >>> 0;
       let controller1_byte3 = data[3] >>> 0;
 
@@ -127,8 +130,12 @@ export class InputReader {
       this.controller1.r_analog = data[9];
       this.controller2.r_analog = data[18];
 
-      this.controller1.pressButtons(controllerOneButtonsArray);
-      this.controller2.pressButtons(controllerTwoButtonsArray);
+      if (this.controller1.enabled) {
+        this.controller1.pressButtons(controllerOneButtonsArray);
+      }
+      if (this.controller2.enabled) {
+        this.controller2.pressButtons(controllerTwoButtonsArray);
+      }
 
       // Poll file at 120Hz
       setTimeout(() => this.pollInputsFile(), 16.667);

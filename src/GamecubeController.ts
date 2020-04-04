@@ -20,6 +20,7 @@ export class GamecubeController {
   l_analog: number;
   r_analog: number;
   port: number;
+  enabled: Boolean;
 
   constructor(port: number) {
     this.a_button = false;
@@ -41,149 +42,102 @@ export class GamecubeController {
     this.l_analog = 0;
     this.r_analog = 0;
     this.port = port;
+    this.enabled = false;
   }
 
   a_pressed() {
-    if (this.a_button === false)
-      console.log('Port ' + this.port + ': A PRESSED');
     this.a_button = true;
   }
 
   a_released() {
-    if (this.a_button === true)
-      console.log('Port ' + this.port + ': A RELEASED');
     this.a_button = false;
   }
 
   b_pressed() {
-    if (this.b_button === false)
-      console.log('Port ' + this.port + ': B PRESSED');
     this.b_button = true;
   }
 
   b_released() {
-    if (this.b_button === true) 
-      console.log('Port ' + this.port + ': B RELEASED');
     this.b_button = false;
   }
 
   x_pressed() {
-    if (this.x_button === false) 
-      console.log('Port ' + this.port + ': X PRESSED');
     this.x_button = true;
   }
 
   x_released() {
-    if (this.x_button === true) 
-      console.log('Port ' + this.port + ': X RELEASED');
     this.x_button = false;
   }
 
   y_pressed() {
-    if (this.y_button === false) 
-      console.log('Port ' + this.port + ': Y PRESSED');
     this.y_button = true;
   }
 
   y_released() {
-    if (this.y_button === true) 
-      console.log('Port ' + this.port + ': Y RELEASED');
     this.y_button = false;
   }
 
   l_pressed() {
-    if (this.l_trigger === false) 
-      console.log('Port ' + this.port + ': L TRIGGER PRESSED');
     this.l_trigger = true;
   }
 
   l_released() {
-    if (this.l_trigger === true) 
-      console.log('Port ' + this.port + ': L TRIGGER RELEASED');
     this.l_trigger = false;
   }
 
   r_pressed() {
-    if (this.r_trigger === false) 
-      console.log('Port ' + this.port + ': R TRIGGER PRESSED');
     this.r_trigger = true;
   }
 
   r_released() {
-    if (this.r_trigger === true) 
-      console.log('Port ' + this.port + ': R TRIGGER RELEASED');
     this.r_trigger = false;
   }
 
   z_pressed() {
-    if (this.z_button === false) 
-      console.log('Port ' + this.port + ': Z TRIGGER PRESSED');
     this.z_button = true;
   }
 
   z_released() {
-    if (this.z_button === true) 
-      console.log('Port ' + this.port + ': Z TRIGGER RELEASED');
     this.z_button = false;
   }
 
   d_pad_left_pressed() {
-    if (this.d_pad_left === false) 
-      console.log('Port ' + this.port + ': D PAD LEFT PRESSED');
     this.d_pad_left = true;
   }
 
   d_pad_left_released() {
-    if (this.d_pad_left === true) 
-      console.log('Port ' + this.port + ': D PAD LEFT RELEASED');
     this.d_pad_left = false;
   }
 
   d_pad_right_pressed() {
-    if (this.d_pad_right === false) 
-      console.log('Port ' + this.port + ': D PAD RIGHT PRESSED');
     this.d_pad_right = true;
   }
 
   d_pad_right_released() {
-    if (this.d_pad_right === true) 
-      console.log('Port ' + this.port + ': D PAD RIGHT RELEASED');
     this.d_pad_right = false;
   }
 
   d_pad_down_pressed() {
-    if (this.d_pad_down === false) 
-      console.log('Port ' + this.port + ': D PAD DOWN PRESSED');
     this.d_pad_down = true;
   }
 
   d_pad_down_released() {
-    if (this.d_pad_down === true) 
-      console.log('Port ' + this.port + ': D PAD DOWN RELEASED');
     this.d_pad_down = false;
   }
 
   d_pad_up_pressed() {
-    if (this.d_pad_up === false) 
-      console.log('Port ' + this.port + ': D PAD UP PRESSED');
     this.d_pad_up = true;
   }
 
   d_pad_up_released() {
-    if (this.d_pad_up === true) 
-      console.log('Port ' + this.port + ': D PAD UP RELEASED');
     this.d_pad_up = false;
   }
 
   start_pressed() {
-    if (this.start_button === false) 
-      console.log('Port ' + this.port + ': START PRESSED');
     this.start_button = true;
   }
 
   start_released() {
-    if (this.start_button === true) 
-      console.log('Port ' + this.port + ': START RELEASED');
     this.start_button = false;
   }
 
@@ -285,6 +239,16 @@ export class GamecubeController {
     }
 
     mainWindow.webContents.send('controller polled', this);
+  }
+
+  enableOrDisable(enabled: Boolean) {
+    if (enabled && !this.enabled) {
+      this.enabled = true;
+      mainWindow.webContents.send('port' + this.port + ' enabled');
+    } else if (!enabled && this.enabled) {
+      this.enabled = false;
+      mainWindow.webContents.send('port' + this.port + ' disabled');
+    }
   }
 
 }
