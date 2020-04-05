@@ -30,7 +30,42 @@ import './index.css';
 import { GamecubeController } from './GamecubeController';
 import '@simonwep/pickr/dist/themes/nano.min.css';
 import Pickr from '@simonwep/pickr';
-const { ipcRenderer } = require('electron');
+const { ipcRenderer, webFrame } = require('electron');
+
+let zoomFactor = 1.0;
+
+const zoomInButton = <HTMLInputElement> document.getElementById('zoom-in');
+const zoomOutButton = <HTMLInputElement> document.getElementById('zoom-out');
+
+zoomOutButton.disabled = true;
+
+document.getElementById('close').onclick = () => {
+  close();
+};
+
+document.getElementById('zoom-in').onclick = () => {
+  ipcRenderer.send('zoom-in');
+  zoomFactor += 0.25;
+  if (zoomOutButton.disabled) {
+    zoomOutButton.disabled = false;
+  }
+  if (zoomFactor === 2) {
+    zoomInButton.disabled = true;
+  }
+  webFrame.setZoomFactor(zoomFactor);
+}
+
+document.getElementById('zoom-out').onclick = () => {
+  ipcRenderer.send('zoom-out');
+  zoomFactor -= 0.25;
+  if (zoomInButton.disabled) {
+    zoomInButton.disabled = false;
+  }
+  if (zoomFactor === 1) {
+    zoomOutButton.disabled = true;
+  }
+  webFrame.setZoomFactor(zoomFactor);
+}
 
 ipcRenderer.on('controller polled', (error: any, controller: GamecubeController) => {
   if (controller.a_button) {
@@ -164,6 +199,22 @@ ipcRenderer.on('port2 enabled', () => {
 
 ipcRenderer.on('port2 disabled', () => {
   document.getElementById('port2').style.visibility = 'hidden';
+});
+
+ipcRenderer.on('port3 enabled', () => {
+  document.getElementById('port3').style.visibility = 'visible';
+});
+
+ipcRenderer.on('port3 disabled', () => {
+  document.getElementById('port3').style.visibility = 'hidden';
+});
+
+ipcRenderer.on('port4 enabled', () => {
+  document.getElementById('port4').style.visibility = 'visible';
+});
+
+ipcRenderer.on('port4 disabled', () => {
+  document.getElementById('port4').style.visibility = 'hidden';
 });
 
 const colorPickerButton = <HTMLInputElement> document.getElementById('color-picker-button');

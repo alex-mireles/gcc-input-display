@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcRenderer, ipcMain } from 'electron';
 import { InputReader } from './InputReader';
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
 
@@ -14,10 +14,13 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    height: 600,
-    width: 680,
+    height: 680,
+    width: 742,
+    minWidth: 370,
+    minHeight: 340,
     frame: false,
     show: false,
+    backgroundColor: '#21252b',
     webPreferences: {
       nodeIntegration: true,
       webSecurity: process.env.NODE_ENV !== 'development'
@@ -54,7 +57,25 @@ app.on('activate', () => {
   }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
+ipcMain.on('zoom-in', () => {
+  let minSizeArray = mainWindow.getMinimumSize();
+  let width = minSizeArray[0] + 93;
+  let height = minSizeArray[1] + 85;
+  mainWindow.setMinimumSize(width, height);
+
+  let currentSizeArray = mainWindow.getSize();
+  mainWindow.setSize(currentSizeArray[0], currentSizeArray[1]);
+});
+
+ipcMain.on('zoom-out', () => {
+  let minSizeArray = mainWindow.getMinimumSize();
+  let width = minSizeArray[0] - 93;
+  let height = minSizeArray[1] - 85;
+  mainWindow.setMinimumSize(width, height);
+  
+  let currentSizeArray = mainWindow.getSize();
+  mainWindow.setSize(currentSizeArray[0], currentSizeArray[1]);
+});
+
 const inputReader = new InputReader();
 inputReader.pollInputsFile();

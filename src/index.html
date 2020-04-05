@@ -11,92 +11,181 @@
 <body>
   <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
   <div class="menu-bar">
-    <div class="app-title">GCC Input Display</div>
-    <button id="color-picker-button" type="button">Color Picker</button>
+    <div style="overflow: hidden;">
+      <button id="color-picker-button" class="unselectable">Color Picker</button>
+      <button id="zoom-out" class="unselectable"> Zoom Out </button>
+      <button id="zoom-in" class="unselectable"> Zoom In </button>
+    </div>
+    <div id="close" class="unselectable"> ✕ </div>
   </div>
-  <div id="port1" class="port-container">
-    <div id="port1-l-trigger">
-      <div id="port1-l-analog"></div>
-      <div id="port1-l-trigger-shadow"></div>
     </div>
-    <div id="port1-r-trigger">
-      <div id="port1-r-analog"></div>
-      <div id="port1-r-trigger-shadow"></div>
-    </div>
-    <div id="port1-z-button"></div>
-    <div id="port1-z-press-shadow"></div>
-    <div class="port1-control-stick-and-buttons">
-      <div id="port1-control-stick-box">
-        <div id="port1-control-stick"></div>
+    <div id="port1" class="port-container">
+      <div id="port1-l-trigger">
+        <div id="port1-l-analog"></div>
+        <div id="port1-l-trigger-shadow"></div>
       </div>
-      <div id="port1-a-button"></div>
-      <div id="port1-a-press-shadow"></div>
-      <div id="port1-b-button"></div>
-      <div id="port1-b-press-shadow"></div>
-      <div id="port1-x-button"></div>
-      <div id="port1-x-press-shadow"></div>
-      <div id="port1-y-button"></div>
-      <div id="port1-y-press-shadow"></div>
-      <div id="port1-start-button"></div>
-      <div id="port1-start-press-shadow"></div>
+      <div id="port1-r-trigger">
+        <div id="port1-r-analog"></div>
+        <div id="port1-r-trigger-shadow"></div>
+      </div>
+      <div id="port1-z-button"></div>
+      <div id="port1-z-press-shadow"></div>
+      <div class="port1-control-stick-and-buttons">
+        <div id="port1-control-stick-box">
+          <div id="port1-control-stick"></div>
+        </div>
+        <div id="port1-a-button"></div>
+        <div id="port1-a-press-shadow"></div>
+        <div id="port1-b-button"></div>
+        <div id="port1-b-press-shadow"></div>
+        <div id="port1-x-button"></div>
+        <div id="port1-x-press-shadow"></div>
+        <div id="port1-y-button"></div>
+        <div id="port1-y-press-shadow"></div>
+        <div id="port1-start-button"></div>
+        <div id="port1-start-press-shadow"></div>
+      </div>
+      <div id="port1-c-stick-box">
+        <div id="port1-c-stick"></div>
+      </div>
+      <div id="port1-d-pad">
+        <div id="port1-d-pad-center"></div>
+        <div id="port1-d-pad-left"></div>
+        <div id="port1-d-pad-left-press-shadow"></div>
+        <div id="port1-d-pad-right"></div>
+        <div id="port1-d-pad-right-press-shadow"></div>
+        <div id="port1-d-pad-down"></div>
+        <div id="port1-d-pad-down-press-shadow"></div>
+        <div id="port1-d-pad-up"></div>
+        <div id="port1-d-pad-up-press-shadow"></div>
+      </div>
     </div>
-    <div id="port1-c-stick-box">
-      <div id="port1-c-stick"></div>
-    </div>
-    <div id="port1-d-pad">
-      <div id="port1-d-pad-center"></div>
-      <div id="port1-d-pad-left"></div>
-      <div id="port1-d-pad-left-press-shadow"></div>
-      <div id="port1-d-pad-right"></div>
-      <div id="port1-d-pad-right-press-shadow"></div>
-      <div id="port1-d-pad-down"></div>
-      <div id="port1-d-pad-down-press-shadow"></div>
-      <div id="port1-d-pad-up"></div>
-      <div id="port1-d-pad-up-press-shadow"></div>
-    </div>
-  </div>
 
-  <div id="port2" class="port-container" style="left: 350px;">
-    <div id="port2-l-trigger">
-      <div id="port2-l-analog"></div>
-      <div id="port2-l-trigger-shadow"></div>
-    </div>
-    <div id="port2-r-trigger">
-      <div id="port2-r-analog"></div>
-      <div id="port2-r-trigger-shadow"></div>
-    </div>
-    <div id="port2-z-button"></div>
-    <div id="port2-z-press-shadow"></div>
-    <div class="port2-control-stick-and-buttons">
-      <div id="port2-control-stick-box">
-        <div id="port2-control-stick"></div>
+    <div id="port2" class="port-container" style="left: 360px;">
+      <div id="port2-l-trigger">
+        <div id="port2-l-analog"></div>
+        <div id="port2-l-trigger-shadow"></div>
       </div>
-      <div id="port2-a-button"></div>
-      <div id="port2-a-press-shadow"></div>
-      <div id="port2-b-button"></div>
-      <div id="port2-b-press-shadow"></div>
-      <div id="port2-x-button"></div>
-      <div id="port2-x-press-shadow"></div>
-      <div id="port2-y-button"></div>
-      <div id="port2-y-press-shadow"></div>
-      <div id="port2-start-button"></div>
-      <div id="port2-start-press-shadow"></div>
+      <div id="port2-r-trigger">
+        <div id="port2-r-analog"></div>
+        <div id="port2-r-trigger-shadow"></div>
+      </div>
+      <div id="port2-z-button"></div>
+      <div id="port2-z-press-shadow"></div>
+      <div class="port2-control-stick-and-buttons">
+        <div id="port2-control-stick-box">
+          <div id="port2-control-stick"></div>
+        </div>
+        <div id="port2-a-button"></div>
+        <div id="port2-a-press-shadow"></div>
+        <div id="port2-b-button"></div>
+        <div id="port2-b-press-shadow"></div>
+        <div id="port2-x-button"></div>
+        <div id="port2-x-press-shadow"></div>
+        <div id="port2-y-button"></div>
+        <div id="port2-y-press-shadow"></div>
+        <div id="port2-start-button"></div>
+        <div id="port2-start-press-shadow"></div>
+      </div>
+      <div id="port2-c-stick-box">
+        <div id="port2-c-stick"></div>
+      </div>
+      <div id="port2-d-pad">
+        <div id="port2-d-pad-center"></div>
+        <div id="port2-d-pad-left"></div>
+        <div id="port2-d-pad-left-press-shadow"></div>
+        <div id="port2-d-pad-right"></div>
+        <div id="port2-d-pad-right-press-shadow"></div>
+        <div id="port2-d-pad-down"></div>
+        <div id="port2-d-pad-down-press-shadow"></div>
+        <div id="port2-d-pad-up"></div>
+        <div id="port2-d-pad-up-press-shadow"></div>
+      </div>
     </div>
-    <div id="port2-c-stick-box">
-      <div id="port2-c-stick"></div>
+
+    <div id="port3" class="port-container" style="top: 340px;">
+      <div id="port3-l-trigger">
+        <div id="port3-l-analog"></div>
+        <div id="port3-l-trigger-shadow"></div>
+      </div>
+      <div id="port3-r-trigger">
+        <div id="port3-r-analog"></div>
+        <div id="port3-r-trigger-shadow"></div>
+      </div>
+      <div id="port3-z-button"></div>
+      <div id="port3-z-press-shadow"></div>
+      <div class="port3-control-stick-and-buttons">
+        <div id="port3-control-stick-box">
+          <div id="port3-control-stick"></div>
+        </div>
+        <div id="port3-a-button"></div>
+        <div id="port3-a-press-shadow"></div>
+        <div id="port3-b-button"></div>
+        <div id="port3-b-press-shadow"></div>
+        <div id="port3-x-button"></div>
+        <div id="port3-x-press-shadow"></div>
+        <div id="port3-y-button"></div>
+        <div id="port3-y-press-shadow"></div>
+        <div id="port3-start-button"></div>
+        <div id="port3-start-press-shadow"></div>
+      </div>
+      <div id="port3-c-stick-box">
+        <div id="port3-c-stick"></div>
+      </div>
+      <div id="port3-d-pad">
+        <div id="port3-d-pad-center"></div>
+        <div id="port3-d-pad-left"></div>
+        <div id="port3-d-pad-left-press-shadow"></div>
+        <div id="port3-d-pad-right"></div>
+        <div id="port3-d-pad-right-press-shadow"></div>
+        <div id="port3-d-pad-down"></div>
+        <div id="port3-d-pad-down-press-shadow"></div>
+        <div id="port3-d-pad-up"></div>
+        <div id="port3-d-pad-up-press-shadow"></div>
+      </div>
     </div>
-    <div id="port2-d-pad">
-      <div id="port2-d-pad-center"></div>
-      <div id="port2-d-pad-left"></div>
-      <div id="port2-d-pad-left-press-shadow"></div>
-      <div id="port2-d-pad-right"></div>
-      <div id="port2-d-pad-right-press-shadow"></div>
-      <div id="port2-d-pad-down"></div>
-      <div id="port2-d-pad-down-press-shadow"></div>
-      <div id="port2-d-pad-up"></div>
-      <div id="port2-d-pad-up-press-shadow"></div>
+
+    <div id="port4" class="port-container" style="top: 340px; left: 360px;">
+      <div id="port4-l-trigger">
+        <div id="port4-l-analog"></div>
+        <div id="port4-l-trigger-shadow"></div>
+      </div>
+      <div id="port4-r-trigger">
+        <div id="port4-r-analog"></div>
+        <div id="port4-r-trigger-shadow"></div>
+      </div>
+      <div id="port4-z-button"></div>
+      <div id="port4-z-press-shadow"></div>
+      <div class="port4-control-stick-and-buttons">
+        <div id="port4-control-stick-box">
+          <div id="port4-control-stick"></div>
+        </div>
+        <div id="port4-a-button"></div>
+        <div id="port4-a-press-shadow"></div>
+        <div id="port4-b-button"></div>
+        <div id="port4-b-press-shadow"></div>
+        <div id="port4-x-button"></div>
+        <div id="port4-x-press-shadow"></div>
+        <div id="port4-y-button"></div>
+        <div id="port4-y-press-shadow"></div>
+        <div id="port4-start-button"></div>
+        <div id="port4-start-press-shadow"></div>
+      </div>
+      <div id="port4-c-stick-box">
+        <div id="port4-c-stick"></div>
+      </div>
+      <div id="port4-d-pad">
+        <div id="port4-d-pad-center"></div>
+        <div id="port4-d-pad-left"></div>
+        <div id="port4-d-pad-left-press-shadow"></div>
+        <div id="port4-d-pad-right"></div>
+        <div id="port4-d-pad-right-press-shadow"></div>
+        <div id="port4-d-pad-down"></div>
+        <div id="port4-d-pad-down-press-shadow"></div>
+        <div id="port4-d-pad-up"></div>
+        <div id="port4-d-pad-up-press-shadow"></div>
+      </div>
     </div>
-  </div>
 </body>
 
 </html>

@@ -245,16 +245,17 @@ export class GamecubeController {
     if (enabled && !this.enabled) {
       this.enabled = true;
       mainWindow.webContents.send('port' + this.port + ' enabled');
-      if (this.port == 2) {
-        mainWindow.setSize(680, 300, true);
-      }
     } else if (!enabled && this.enabled) {
       this.enabled = false;
       mainWindow.webContents.send('port' + this.port + ' disabled');
-      if (this.port == 2) {
-        mainWindow.setSize(330, 300, true);
-      }
     }
+    // if (enabled) {
+    //   this.enabled = true;
+    //   mainWindow.webContents.send('port' + this.port + ' enabled');
+    // } else {
+    //   this.enabled = false;
+    //   mainWindow.webContents.send('port' + this.port + ' disabled');
+    // }
   }
 
 }
