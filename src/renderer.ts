@@ -44,7 +44,6 @@ document.getElementById('close').onclick = () => {
 };
 
 document.getElementById('zoom-in').onclick = () => {
-  ipcRenderer.send('zoom-in');
   zoomFactor += 0.25;
   if (zoomOutButton.disabled) {
     zoomOutButton.disabled = false;
@@ -53,10 +52,10 @@ document.getElementById('zoom-in').onclick = () => {
     zoomInButton.disabled = true;
   }
   webFrame.setZoomFactor(zoomFactor);
+  ipcRenderer.send('zoom-in');
 }
 
 document.getElementById('zoom-out').onclick = () => {
-  ipcRenderer.send('zoom-out');
   zoomFactor -= 0.25;
   if (zoomInButton.disabled) {
     zoomInButton.disabled = false;
@@ -65,7 +64,28 @@ document.getElementById('zoom-out').onclick = () => {
     zoomOutButton.disabled = true;
   }
   webFrame.setZoomFactor(zoomFactor);
+  ipcRenderer.send('zoom-out');
 }
+
+document.getElementById('file-path').onclick = () => {
+  ipcRenderer.send('open-file');
+}
+
+ipcRenderer.on('file path set', () => {
+  document.getElementById('file-not-set').style.visibility = 'hidden';
+});
+
+ipcRenderer.on('file path not set', () => {
+  document.getElementById('file-not-set').style.visibility = 'visible';
+});
+
+ipcRenderer.on('file path set', () => {
+  document.getElementById('file-not-found').style.visibility = 'hidden';
+});
+
+ipcRenderer.on('file not found', () => {
+  document.getElementById('file-not-found').style.visibility = 'visible';
+}); 
 
 ipcRenderer.on('controller polled', (error: any, controller: GamecubeController) => {
   if (controller.a_button) {
@@ -183,38 +203,6 @@ ipcRenderer.on('controller polled', (error: any, controller: GamecubeController)
   rotationX = ((controller.c_stick_y - 127) / 127) * 40;
 
   document.getElementById('port' + controller.port +'-c-stick').style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
-});
-
-ipcRenderer.on('port1 enabled', () => {
-  document.getElementById('port1').style.visibility = 'visible';
-});
-
-ipcRenderer.on('port1 disabled', () => {
-  document.getElementById('port1').style.visibility = 'hidden';
-});
-
-ipcRenderer.on('port2 enabled', () => {
-  document.getElementById('port2').style.visibility = 'visible';
-});
-
-ipcRenderer.on('port2 disabled', () => {
-  document.getElementById('port2').style.visibility = 'hidden';
-});
-
-ipcRenderer.on('port3 enabled', () => {
-  document.getElementById('port3').style.visibility = 'visible';
-});
-
-ipcRenderer.on('port3 disabled', () => {
-  document.getElementById('port3').style.visibility = 'hidden';
-});
-
-ipcRenderer.on('port4 enabled', () => {
-  document.getElementById('port4').style.visibility = 'visible';
-});
-
-ipcRenderer.on('port4 disabled', () => {
-  document.getElementById('port4').style.visibility = 'hidden';
 });
 
 const colorPickerButton = <HTMLInputElement> document.getElementById('color-picker-button');

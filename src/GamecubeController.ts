@@ -241,21 +241,8 @@ export class GamecubeController {
     mainWindow.webContents.send('controller polled', this);
   }
 
-  enableOrDisable(enabled: Boolean) {
-    if (enabled && !this.enabled) {
-      this.enabled = true;
-      mainWindow.webContents.send('port' + this.port + ' enabled');
-    } else if (!enabled && this.enabled) {
-      this.enabled = false;
-      mainWindow.webContents.send('port' + this.port + ' disabled');
-    }
-    // if (enabled) {
-    //   this.enabled = true;
-    //   mainWindow.webContents.send('port' + this.port + ' enabled');
-    // } else {
-    //   this.enabled = false;
-    //   mainWindow.webContents.send('port' + this.port + ' disabled');
-    // }
+  enable(enabled: Boolean) {
+    this.enabled = enabled;
   }
 
 }

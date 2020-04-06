@@ -1,10 +1,12 @@
 import { GamecubeController } from './GamecubeController';
+import { inputsFilePath, mainWindow } from './index';
 var fs = require('fs');
 
 export class InputReader {
 
   adapter: any;
   endpoint: any;
+  fileError: Boolean;
   controller1: GamecubeController;
   controller2: GamecubeController;
   controller3: GamecubeController;
@@ -15,14 +17,31 @@ export class InputReader {
     this.controller2 = new GamecubeController(2);
     this.controller3 = new GamecubeController(3);
     this.controller4 = new GamecubeController(4);
+    this.fileError = false;
   }
 
   pollInputsFile() {
 
-    fs.readFile("D:/Games/Netplay/Project M/git_build/project-plus/Bird's Dolphin Test/GCCInputs.bin", (err: any, data: any) => {
+    // If path hasn't been set yet, try again in 1 second.
+    if (inputsFilePath === undefined || inputsFilePath === '') {
+      setTimeout(() => this.pollInputsFile(), 1000);
+      return;
+    }
+
+    fs.readFile(inputsFilePath, (err: any, data: any) => {
+
+      if (err) {
+        mainWindow.webContents.send('file not found');
+        this.fileError = true;
+        setTimeout(() => this.pollInputsFile(), 1000);
+        return;
+      } else if (this.fileError) {
+        mainWindow.webContents.send('file found');
+        this.fileError = false;
+      }
 
       if (data.length != 37) {
-        // Failed to read from file, try again
+        // Failed to read data from file, try again
         setTimeout(() => this.pollInputsFile(), 16.667);
         return;
       }
@@ -35,10 +54,10 @@ export class InputReader {
       // Port 3: Bytes 20 - 28
       // Port 4: Bytes 29 - 37
 
-      this.controller1.enableOrDisable(data[1] > 0 ? true : false);
-      this.controller2.enableOrDisable(data[10] > 0 ? true : false);
-      this.controller3.enableOrDisable(data[19] > 0 ? true : false);
-      this.controller4.enableOrDisable(data[28] > 0 ? true : false);
+      this.controller1.enable(data[1] > 0 ? true : false);
+      this.controller2.enable(data[10] > 0 ? true : false);
+      this.controller3.enable(data[19] > 0 ? true : false);
+      this.controller4.enable(data[28] > 0 ? true : false);
 
       let controller1_byte2 = data[2] >>> 0;
       let controller1_byte3 = data[3] >>> 0;

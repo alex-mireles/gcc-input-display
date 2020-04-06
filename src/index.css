@@ -108,6 +108,47 @@ html {
   background-color: #2f3845;
 }
 
+#file-path {
+  border: none;
+  outline: none;
+  background-color: #2f3845;
+  border-radius: 5px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  margin-top: 3px;
+  width: 90px;
+  height: 24px;
+  color: white;
+  transition: background-color 0.5s;
+  -webkit-app-region: no-drag;
+}
+
+#file-path:hover {
+  cursor: pointer;
+  background-color: #728299;
+  transition: background-color 0.5s;
+}
+
+#file-not-set {
+  position: absolute;
+  font-family: 'Nunito', sans-serif;
+  color: white;
+  font-size: 15px;
+  margin: 10px;
+  white-space: nowrap;
+  visibility: hidden;
+}
+
+#file-not-found {
+  position: absolute;
+  font-family: 'Nunito', sans-serif;
+  color: white;
+  font-size: 15px;
+  margin: 10px;
+  white-space: nowrap;
+  visibility: hidden;
+}
+
 #close {
   font-family: 'Nunito', sans-serif;
   color: white;
@@ -117,7 +158,7 @@ html {
   right: 0px;
   text-align: center;
   line-height: 30px;
-  background-color: transparent;
+  background-color: #21252b;
   transition: background-color 0.5s;
   -webkit-app-region: no-drag;
 }
@@ -630,8 +671,8 @@ html {
   background-color: #ffe600;
   height: 40px;
   width: 40px;
-  bottom: calc((70px / 2) - 17.5px);
-  left: calc((70px / 2) - 17.5px);
+  bottom: calc((70px / 2) - 20px);
+  left: calc((70px / 2) - 20px);
   border-radius: 50%;
   transition: 16.66ms;
   transform: rotateX(0deg), rotateY(0deg);

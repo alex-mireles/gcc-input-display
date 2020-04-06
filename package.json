@@ -84,6 +84,7 @@
   },
   "dependencies": {
     "@simonwep/pickr": "^1.5.1",
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^5.1.1"
   }
 }

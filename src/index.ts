@@ -1,8 +1,11 @@
-import { app, BrowserWindow, ipcRenderer, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, dialog, ipcRenderer } from 'electron';
 import { InputReader } from './InputReader';
+import Store from 'electron-store';
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
 
 export let mainWindow: BrowserWindow;
+const store = new Store();
+export let inputsFilePath: string;
 
 app.disableHardwareAcceleration();
 
@@ -32,7 +35,18 @@ const createWindow = () => {
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
   });
-  
+
+  // Main program:
+
+  inputsFilePath = store.get('filePath')
+
+  if (inputsFilePath === undefined) {
+    mainWindow.webContents.send('file path not set');
+  }
+
+  const inputReader = new InputReader();
+  inputReader.pollInputsFile();
+
 };
 
 // This method will be called when Electron has finished
@@ -77,5 +91,21 @@ ipcMain.on('zoom-out', () => {
   mainWindow.setSize(currentSizeArray[0], currentSizeArray[1]);
 });
 
-const inputReader = new InputReader();
-inputReader.pollInputsFile();
+ipcMain.on('open-file', () => {
+  dialog.showOpenDialog(mainWindow, {
+    defaultPath: inputsFilePath,
+    filters: [
+      { name: 'GCCInputs.bin', extensions: ['bin'] }
+    ],
+    properties: ['openFile']
+  }).then(result => {
+    if (result.canceled) {
+      return;
+    }
+    inputsFilePath = result.filePaths[0];
+    store.set('filePath', inputsFilePath.toString())
+    mainWindow.webContents.send('file path set');
+  }).catch(err => {
+    console.log(err);
+  })
+});
