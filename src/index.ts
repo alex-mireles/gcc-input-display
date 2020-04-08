@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, dialog, ipcRenderer } from 'electron';
+import { app, BrowserWindow, ipcMain, dialog } from 'electron';
 import { InputReader } from './InputReader';
 import Store from 'electron-store';
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;

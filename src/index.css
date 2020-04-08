@@ -635,7 +635,9 @@ html {
 
 #port1-control-stick-box, #port2-control-stick-box, #port3-control-stick-box, #port4-control-stick-box{
   position: absolute;
-  background-image: url("file:///control_stick.png");
+  /* background-image: url("file:///src/images/control_stick.png"); */
+  /* For production: */
+  background-image: url("file:///resources/app/.webpack/renderer/images/control_stick.png");
   background-size: 70px;
   top: 30px;
   height: 70px;
@@ -657,7 +659,9 @@ html {
 
 #port1-c-stick-box, #port2-c-stick-box, #port3-c-stick-box, #port4-c-stick-box {
   position: absolute;
-  background-image: url("file:///c_stick.png");
+  /* background-image: url("file:///src/images/c_stick.png"); */
+  /* For production: */
+  background-image: url("file:///resources/app/.webpack/renderer/images/c_stick.png");
   background-size: 70px;
   top: 140px;
   left: 140px;

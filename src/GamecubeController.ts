@@ -1,18 +1,18 @@
 import { mainWindow } from './index';
 
 export class GamecubeController {
-  a_button: Boolean;
-  b_button: Boolean;
-  x_button: Boolean;
-  y_button: Boolean;
-  l_trigger: Boolean;
-  r_trigger: Boolean;
-  z_button: Boolean;
-  start_button: Boolean;
-  d_pad_left: Boolean;
-  d_pad_right: Boolean;
-  d_pad_down: Boolean;
-  d_pad_up: Boolean;
+  a_button: boolean;
+  b_button: boolean;
+  x_button: boolean;
+  y_button: boolean;
+  l_trigger: boolean;
+  r_trigger: boolean;
+  z_button: boolean;
+  start_button: boolean;
+  d_pad_left: boolean;
+  d_pad_right: boolean;
+  d_pad_down: boolean;
+  d_pad_up: boolean;
   control_stick_x: number;
   control_stick_y: number;
   c_stick_x: number;
@@ -20,7 +20,7 @@ export class GamecubeController {
   l_analog: number;
   r_analog: number;
   port: number;
-  enabled: Boolean;
+  enabled: boolean;
 
   constructor(port: number) {
     this.a_button = false;
@@ -45,103 +45,103 @@ export class GamecubeController {
     this.enabled = false;
   }
 
-  a_pressed() {
+  a_pressed(): void {
     this.a_button = true;
   }
 
-  a_released() {
+  a_released(): void {
     this.a_button = false;
   }
 
-  b_pressed() {
+  b_pressed(): void {
     this.b_button = true;
   }
 
-  b_released() {
+  b_released(): void {
     this.b_button = false;
   }
 
-  x_pressed() {
+  x_pressed(): void {
     this.x_button = true;
   }
 
-  x_released() {
+  x_released(): void {
     this.x_button = false;
   }
 
-  y_pressed() {
+  y_pressed(): void {
     this.y_button = true;
   }
 
-  y_released() {
+  y_released(): void {
     this.y_button = false;
   }
 
-  l_pressed() {
+  l_pressed(): void {
     this.l_trigger = true;
   }
 
-  l_released() {
+  l_released(): void {
     this.l_trigger = false;
   }
 
-  r_pressed() {
+  r_pressed(): void {
     this.r_trigger = true;
   }
 
-  r_released() {
+  r_released(): void {
     this.r_trigger = false;
   }
 
-  z_pressed() {
+  z_pressed(): void {
     this.z_button = true;
   }
 
-  z_released() {
+  z_released(): void {
     this.z_button = false;
   }
 
-  d_pad_left_pressed() {
+  d_pad_left_pressed(): void {
     this.d_pad_left = true;
   }
 
-  d_pad_left_released() {
+  d_pad_left_released(): void {
     this.d_pad_left = false;
   }
 
-  d_pad_right_pressed() {
+  d_pad_right_pressed(): void {
     this.d_pad_right = true;
   }
 
-  d_pad_right_released() {
+  d_pad_right_released(): void {
     this.d_pad_right = false;
   }
 
-  d_pad_down_pressed() {
+  d_pad_down_pressed(): void {
     this.d_pad_down = true;
   }
 
-  d_pad_down_released() {
+  d_pad_down_released(): void {
     this.d_pad_down = false;
   }
 
-  d_pad_up_pressed() {
+  d_pad_up_pressed(): void {
     this.d_pad_up = true;
   }
 
-  d_pad_up_released() {
+  d_pad_up_released(): void {
     this.d_pad_up = false;
   }
 
-  start_pressed() {
+  start_pressed(): void {
     this.start_button = true;
   }
 
-  start_released() {
+  start_released(): void {
     this.start_button = false;
   }
 
-  pressButtons(pressedButtonsArray: string[]) {
+  pressButtons(pressedButtonsArray: string[]): void {
     if (pressedButtonsArray.includes('A')) {
       this.a_pressed();
     } else {
@@ -241,7 +241,7 @@ export class GamecubeController {
     mainWindow.webContents.send('controller polled', this);
   }
 
-  enable(enabled: Boolean) {
+  enable(enabled: boolean): void {
     this.enabled = enabled;
   }
 

@@ -6,7 +6,7 @@ export class InputReader {
 
   adapter: any;
   endpoint: any;
-  fileError: Boolean;
+  fileError: boolean;
   controller1: GamecubeController;
   controller2: GamecubeController;
   controller3: GamecubeController;
@@ -22,7 +22,7 @@ export class InputReader {
 
   pollInputsFile() {
 
-    // If path hasn't been set yet, try again in 1 second.
+    // if path hasn't been set yet, try again in 1 second.
     if (inputsFilePath === undefined || inputsFilePath === '') {
       setTimeout(() => this.pollInputsFile(), 1000);
       return;
@@ -30,6 +30,7 @@ export class InputReader {
 
     fs.readFile(inputsFilePath, (err: any, data: any) => {
 
+      // if path has been set, but file doesn't exist
       if (err) {
         mainWindow.webContents.send('file not found');
         this.fileError = true;
