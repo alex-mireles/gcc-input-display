@@ -2,6 +2,8 @@
 
 Currently only works with P+ 2.11 Dolphin. I had to make some workaround edits to Bird's fork of Ishiiruka to get this to work.
 
+Download P+ Dolphin here: https://projectplusgame.com/download/
+
 1) Enable "Write Gamecube Controller Inputs to File" under Controller Config in Dolphin.
 2) Start up a game with Dolphin, then run gcc-input-display.exe and click on File Path.
 3) Open 'GCCinputs.bin', which should be located in the same folder as your Dolphin.exe.
